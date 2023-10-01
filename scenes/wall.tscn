@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1eahi4ikwghm"]
+
+[ext_resource type="Material" uid="uid://bjdwfrxmr8pil" path="res://assets/materials/wall.tres" id="1_j1cfp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pm8tu"]
+size = Vector3(1, 100, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sos27"]
+material = ExtResource("1_j1cfp")
+size = Vector3(1, 100, 1)
+
+[node name="Wall" type="RigidBody3D"]
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 100.0
+max_contacts_reported = 2
+contact_monitor = true
+freeze = true
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+shape = SubResource("BoxShape3D_pm8tu")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+mesh = SubResource("BoxMesh_sos27")

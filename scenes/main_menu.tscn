@@ -1,0 +1,322 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvjjo2s82qu78"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_0dwhp"]
+[ext_resource type="Theme" uid="uid://cory43jhk1rdh" path="res://assets/ui_theme.tres" id="1_0k2a5"]
+[ext_resource type="FontFile" uid="uid://bl8vu5fwlu0y1" path="res://assets/fonts/Montserrat-VariableFont_wght.ttf" id="3_jfg1y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xlnb6"]
+font_size = 64
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gktgd"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 4
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 4
+
+[sub_resource type="FontVariation" id="FontVariation_aunnb"]
+base_font = ExtResource("3_jfg1y")
+variation_embolden = 1.2
+
+[sub_resource type="LabelSettings" id="LabelSettings_8cyj4"]
+font = SubResource("FontVariation_aunnb")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0k2a5")
+script = ExtResource("1_0dwhp")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -462.5
+offset_top = 60.0
+offset_right = 462.5
+offset_bottom = 142.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Ultimate Wall Dropper"
+label_settings = SubResource("LabelSettings_xlnb6")
+uppercase = true
+
+[node name="Main" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 64.0
+offset_right = 464.0
+offset_bottom = 720.0
+grow_vertical = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="CampaignButton" type="Button" parent="Main"]
+layout_mode = 2
+text = "Campaign"
+
+[node name="vsCPUButton" type="Button" parent="Main"]
+layout_mode = 2
+text = "vs CPU"
+
+[node name="vsPlayerButton" type="Button" parent="Main"]
+layout_mode = 2
+text = "vs Player"
+
+[node name="Controls" type="Button" parent="Main"]
+layout_mode = 2
+text = "Controls"
+
+[node name="Mute Audio" type="Button" parent="Main"]
+layout_mode = 2
+toggle_mode = true
+text = "Mute Audio"
+
+[node name="Mute Music" type="Button" parent="Main"]
+layout_mode = 2
+toggle_mode = true
+text = "Mute Music"
+
+[node name="ControlsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -647.0
+offset_top = -173.5
+offset_right = -64.0
+offset_bottom = 173.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gktgd")
+
+[node name="GridContainer" type="GridContainer" parent="ControlsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -149.0
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="Label" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Action"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player 1"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label3" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player 2"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label4" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Move Left"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label5" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Left Arrow"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Move Right"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label8" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "D"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Right Arrow"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dodge"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label11" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "S"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Down Arrow"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label25" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Jump"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label26" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "W"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label27" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Up Arrow"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fast Punch"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label14" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Z"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "H"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label16" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Strong Punch"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label17" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label18" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "J"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label19" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Block"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label20" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "C"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label21" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "K"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label22" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kick"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label23" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "V"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[node name="Label24" type="Label" parent="ControlsPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "L"
+label_settings = SubResource("LabelSettings_8cyj4")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Main/CampaignButton" to="." method="_on_campaign_button_pressed"]
+[connection signal="pressed" from="Main/vsCPUButton" to="." method="_on_vs_cpu_button_pressed"]
+[connection signal="pressed" from="Main/vsPlayerButton" to="." method="_on_vs_player_button_pressed"]
+[connection signal="pressed" from="Main/Controls" to="." method="_on_controls_pressed"]
+[connection signal="toggled" from="Main/Mute Audio" to="." method="_on_mute_audio_toggled"]
+[connection signal="toggled" from="Main/Mute Music" to="." method="_on_mute_music_toggled"]

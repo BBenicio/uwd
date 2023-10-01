@@ -1,0 +1,206 @@
+[gd_scene load_steps=8 format=3 uid="uid://bifds7lysb2w1"]
+
+[ext_resource type="Theme" uid="uid://cory43jhk1rdh" path="res://assets/ui_theme.tres" id="1_0y381"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_1mhb7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ts5oo"]
+font_size = 64
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a1dkx"]
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_o3ruq"]
+font_size = 64
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kepqa"]
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_f4tyb"]
+font_size = 100
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0y381")
+script = ExtResource("1_1mhb7")
+
+[node name="FightCountdown" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 64.0
+offset_right = 20.0
+offset_bottom = 155.0
+grow_horizontal = 2
+text = "3"
+label_settings = SubResource("LabelSettings_ts5oo")
+horizontal_alignment = 1
+
+[node name="WinAnnouncer" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 64.0
+offset_right = 20.0
+offset_bottom = 155.0
+grow_horizontal = 2
+text = "Player WINS"
+label_settings = SubResource("LabelSettings_ts5oo")
+horizontal_alignment = 1
+
+[node name="RoundLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_top = 16.0
+offset_right = 48.5
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "Round 1 of 3"
+label_settings = SubResource("LabelSettings_a1dkx")
+horizontal_alignment = 1
+
+[node name="PausePanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CampaignControl" type="Control" parent="PausePanel"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CampaignNextLabel" type="Label" parent="PausePanel/CampaignControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 157.5
+offset_top = 139.0
+offset_right = 1082.5
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You won, get ready
+for the next fight"
+label_settings = SubResource("LabelSettings_o3ruq")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="NextFightButton" type="Button" parent="PausePanel/CampaignControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 556.0
+offset_top = 447.0
+offset_right = 684.0
+offset_bottom = 478.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Fight"
+
+[node name="CampaignRemainingLabel" type="Label" parent="PausePanel/CampaignControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 157.5
+offset_top = 256.0
+offset_right = 1082.5
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "5 fights until you are the UWD"
+label_settings = SubResource("LabelSettings_kepqa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChampionLabel" type="Label" parent="PausePanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.0
+offset_top = -70.0
+offset_right = 223.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You are the
+ULTIMATE WALL DROPPER"
+label_settings = SubResource("LabelSettings_o3ruq")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="PauseLabel" type="Label" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.0
+offset_top = -70.0
+offset_right = 193.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_f4tyb")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MainMenuButton" type="Button" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 64.0
+offset_right = 64.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="PausePanel/CampaignControl/NextFightButton" to="." method="_on_next_fight_button_pressed"]
+[connection signal="pressed" from="PausePanel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

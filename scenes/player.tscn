@@ -1,0 +1,160 @@
+[gd_scene load_steps=22 format=3 uid="uid://b08diri682s7d"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_6pfkb"]
+[ext_resource type="PackedScene" uid="uid://cw5snhljfkmky" path="res://assets/models/character.blend" id="2_5dt1b"]
+[ext_resource type="AudioStream" uid="uid://bfq0lv8c2eill" path="res://assets/audio/hit.wav" id="3_k0ajq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8uq3m"]
+resource_local_to_scene = true
+size = Vector3(0.5, 1.3, 0.25)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jxayx"]
+animation = &"Backward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pv8vp"]
+animation = &"Block"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_p4f6r"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yl1qu"]
+animation = &"Cross"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_jlrrm"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_er5dp"]
+animation = &"Dodge"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_f4h25"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hkc2f"]
+animation = &"Forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l8ffn"]
+animation = &"Guard"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_arkha"]
+animation = &"Jab"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_o3811"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Head", "Armature/Skeleton3D:LeftArm", "Armature/Skeleton3D:LeftLeg", "Armature/Skeleton3D:LeftLowerArm", "Armature/Skeleton3D:LeftLowerLeg", "Armature/Skeleton3D:RightLeg", "Armature/Skeleton3D:RightLowerLeg", "Armature/Skeleton3D:Spine"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ice2t"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_o4lp0"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_srlld"]
+animation = &"Kick"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2w6oi"]
+
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_2i56q"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_27fyl"]
+graph_offset = Vector2(30.2727, 289.636)
+nodes/BackwardAnimation/node = SubResource("AnimationNodeAnimation_jxayx")
+nodes/BackwardAnimation/position = Vector2(-780, 140)
+nodes/BlockAnimation/node = SubResource("AnimationNodeAnimation_pv8vp")
+nodes/BlockAnimation/position = Vector2(-20, 400)
+nodes/BlockBlend/node = SubResource("AnimationNodeBlend2_p4f6r")
+nodes/BlockBlend/position = Vector2(240, 200)
+nodes/CrossAnimation/node = SubResource("AnimationNodeAnimation_yl1qu")
+nodes/CrossAnimation/position = Vector2(440, 560)
+nodes/CrossOneShot/node = SubResource("AnimationNodeOneShot_jlrrm")
+nodes/CrossOneShot/position = Vector2(640, 320)
+nodes/DodgeAnimation/node = SubResource("AnimationNodeAnimation_er5dp")
+nodes/DodgeAnimation/position = Vector2(-280, 480)
+nodes/DodgeOneShot/node = SubResource("AnimationNodeOneShot_f4h25")
+nodes/DodgeOneShot/position = Vector2(-20, 160)
+nodes/ForwardAnimation/node = SubResource("AnimationNodeAnimation_hkc2f")
+nodes/ForwardAnimation/position = Vector2(-820, 400)
+nodes/GuardAnimation/node = SubResource("AnimationNodeAnimation_l8ffn")
+nodes/GuardAnimation/position = Vector2(-780, 260)
+nodes/JabAnimation/node = SubResource("AnimationNodeAnimation_arkha")
+nodes/JabAnimation/position = Vector2(0, 520)
+nodes/JabOneShot/node = SubResource("AnimationNodeOneShot_o3811")
+nodes/JabOneShot/position = Vector2(440, 320)
+nodes/JumpAnimation/node = SubResource("AnimationNodeAnimation_ice2t")
+nodes/JumpAnimation/position = Vector2(-460, 380)
+nodes/JumpOneShot/node = SubResource("AnimationNodeOneShot_o4lp0")
+nodes/JumpOneShot/position = Vector2(-240, 160)
+nodes/KickAnimation/node = SubResource("AnimationNodeAnimation_srlld")
+nodes/KickAnimation/position = Vector2(660, 560)
+nodes/KickOneShot/node = SubResource("AnimationNodeOneShot_2w6oi")
+nodes/KickOneShot/position = Vector2(840, 320)
+nodes/MovementBlend/node = SubResource("AnimationNodeBlend3_2i56q")
+nodes/MovementBlend/position = Vector2(-460, 180)
+nodes/output/position = Vector2(1060, 320)
+node_connections = [&"output", 0, &"KickOneShot", &"BlockBlend", 0, &"DodgeOneShot", &"BlockBlend", 1, &"BlockAnimation", &"CrossOneShot", 0, &"JabOneShot", &"CrossOneShot", 1, &"CrossAnimation", &"DodgeOneShot", 0, &"JumpOneShot", &"DodgeOneShot", 1, &"DodgeAnimation", &"JabOneShot", 0, &"BlockBlend", &"JabOneShot", 1, &"JabAnimation", &"JumpOneShot", 0, &"MovementBlend", &"JumpOneShot", 1, &"JumpAnimation", &"KickOneShot", 0, &"CrossOneShot", &"KickOneShot", 1, &"KickAnimation", &"MovementBlend", 0, &"BackwardAnimation", &"MovementBlend", 1, &"GuardAnimation", &"MovementBlend", 2, &"ForwardAnimation"]
+
+[node name="Player" type="CharacterBody3D" groups=["fighters"]]
+script = ExtResource("1_6pfkb")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+shape = SubResource("BoxShape3D_8uq3m")
+
+[node name="character" parent="." instance=ExtResource("2_5dt1b")]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_27fyl")
+anim_player = NodePath("../character/AnimationPlayer")
+active = true
+parameters/BlockBlend/blend_amount = 0.0
+parameters/CrossOneShot/active = false
+parameters/CrossOneShot/request = 0
+parameters/DodgeOneShot/active = false
+parameters/DodgeOneShot/request = 0
+parameters/JabOneShot/active = false
+parameters/JabOneShot/request = 0
+parameters/JumpOneShot/active = false
+parameters/JumpOneShot/request = 0
+parameters/KickOneShot/active = false
+parameters/KickOneShot/request = 0
+parameters/MovementBlend/blend_amount = 0
+
+[node name="DodgeTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="JabTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="JabRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+enabled = false
+target_position = Vector3(0, 0, 0.6)
+debug_shape_custom_color = Color(1, 0, 1, 1)
+
+[node name="CrossTimer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[node name="CrossRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+enabled = false
+target_position = Vector3(0, 0, 0.6)
+debug_shape_custom_color = Color(1, 0, 1, 1)
+
+[node name="KickTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[node name="KickRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0.5, 0)
+enabled = false
+target_position = Vector3(0, 0, 0.6)
+debug_shape_custom_color = Color(1, 0, 1, 1)
+
+[node name="CPUActionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_k0ajq")
+
+[connection signal="timeout" from="DodgeTimer" to="." method="_on_dodge_timer_timeout"]
+[connection signal="timeout" from="JabTimer" to="." method="_on_jab_timer_timeout"]
+[connection signal="timeout" from="CrossTimer" to="." method="_on_cross_timer_timeout"]
+[connection signal="timeout" from="KickTimer" to="." method="_on_kick_timer_timeout"]
